@@ -22,7 +22,7 @@ class _TinderTargetDislikeState extends State<TinderTargetDislike> {
         return Container(
             color: Colors.red,
             height: MediaQuery.of(context).size.height,
-            width: 50,
+            width: MediaQuery.of(context).size.width / 5,
           );
       },
 

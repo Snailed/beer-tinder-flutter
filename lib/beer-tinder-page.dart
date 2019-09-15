@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 import 'components/beer-tinder-page/tinder-card.dart';
 import 'components/beer-tinder-page/tinder-target-like.dart';
 import 'components/beer-tinder-page/tinder-target-dislike.dart';
-class _Beer {
-  String title, author;
-  int id, karma;
-  _Beer(this.id, this.title, this.author, this.karma);
-}
+import 'package:provider/provider.dart';
+import 'state/beer-model.dart';
 
 class BeerTinderPage extends StatefulWidget {
   BeerTinderPage({Key key}) : super(key: key);
@@ -15,18 +12,12 @@ class BeerTinderPage extends StatefulWidget {
 }
 class _BeerTinderPageState extends State<BeerTinderPage> {
 
-  List<_Beer> beerList = [
-    _Beer(1, 'Øl nummer 1', 'Rasmus', 10),
-    _Beer(2, 'Øl nummer 2', 'Mads', -10),
-    _Beer(3, 'Øl nummer 3', 'Lauritz', 40),
-    _Beer(4, 'Øl nummer 4', 'Casper', 0),
-  ];
-  List<Widget> getTinderCards() {
+  List<Widget> getTinderCards(beerList) {
     if (beerList.length > 0) {
       List<Widget> tinderCardList = new List();
       beerList.forEach((beer) => tinderCardList.add(
         Center(
-            child: TinderCard(beer.id, beer.title, beer.author, beer.karma)
+            child: TinderCard(beer)
         )
       ));
       return tinderCardList;
@@ -47,27 +38,28 @@ class _BeerTinderPageState extends State<BeerTinderPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return Consumer<BeerModel>(
+      builder: (context, beerModel, child) {
+          return Stack(
               children: <Widget>[
                 Positioned(
                   right: 0,
                   child: Container(
                       color: Colors.red,
-                      width: 100,
-                      child: TinderTargetLike(key: UniqueKey(), like: (beerId) => like(beerId))
+                      child: TinderTargetLike(key: UniqueKey(), like: (beer) => beer.like())
                   ),
                 ),
                 Positioned(
                   left: 0,
                   child: Container(
                       color: Colors.red,
-                      width: 100,
-                      child: TinderTargetDislike(key: UniqueKey(), dislike: (beerId) => like(beerId))
+                      child: TinderTargetDislike(key: UniqueKey(), dislike: (beer) => beer.dislike())
                   )
                 ),
-                ...getTinderCards()
+                ...getTinderCards(beerModel.beerList)
             ]
         );
   }
+    );
 }
 

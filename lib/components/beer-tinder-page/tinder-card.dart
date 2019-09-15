@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 class TinderCard extends StatelessWidget {
   String title, author;
   int id, karma;
-  TinderCard(this.id, this.title, this.author, this.karma);
+  TinderCard(beer) {
+    this.title = beer.title;
+    this.author = beer.author;
+    this.id = beer.id;
+    this.karma = beer.karma;
+  }
   Widget _getCard() => Container(
     color: Colors.blue,
     width: 100,

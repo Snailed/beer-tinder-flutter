@@ -21,7 +21,7 @@ class _TinderTargetLikeState extends State<TinderTargetLike> {
         return Container(
             color: Colors.blue,
             height: MediaQuery.of(context).size.height,
-            width: 50,
+            width: MediaQuery.of(context).size.width / 5,
           );
       },
 
