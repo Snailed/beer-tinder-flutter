@@ -16,8 +16,11 @@ class _BeerTinderPageState extends State<BeerTinderPage> {
     if (beerList.length > 0) {
       List<Widget> tinderCardList = new List();
       beerList.forEach((beer) => tinderCardList.add(
-        Center(
+        Visibility (
+          visible: beer.shown,
+          child: Center(
             child: TinderCard(beer)
+          )
         )
       ));
       return tinderCardList;
@@ -30,12 +33,6 @@ class _BeerTinderPageState extends State<BeerTinderPage> {
     }
   }
 
-  void like(beerId) {
-    setState(() {
-      beerList.removeWhere((beer) => beer.id == int.parse(beerId));
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Consumer<BeerModel>(
@@ -46,20 +43,21 @@ class _BeerTinderPageState extends State<BeerTinderPage> {
                   right: 0,
                   child: Container(
                       color: Colors.red,
-                      child: TinderTargetLike(key: UniqueKey(), like: (beer) => beer.like())
+                      child: TinderTargetLike(key: UniqueKey(), like: (beer) => beerModel.likeBeer(beer))
                   ),
                 ),
                 Positioned(
                   left: 0,
                   child: Container(
                       color: Colors.red,
-                      child: TinderTargetDislike(key: UniqueKey(), dislike: (beer) => beer.dislike())
+                      child: TinderTargetDislike(key: UniqueKey(), dislike: (beer) => beerModel.dislikeBeer(beer))
                   )
                 ),
                 ...getTinderCards(beerModel.beerList)
             ]
         );
-  }
+      }
     );
+}
 }
 

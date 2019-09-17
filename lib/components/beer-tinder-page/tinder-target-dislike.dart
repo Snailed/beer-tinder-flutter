@@ -1,8 +1,8 @@
-
 import 'package:flutter/material.dart';
+import '../../state/beer-model.dart';
 
 class TinderTargetDislike extends StatefulWidget {
-  Function(String) dislike;
+  Function(Beer) dislike;
   TinderTargetDislike({Key key, @required this.dislike}) : super(key: key);
   @override
   _TinderTargetDislikeState createState() => _TinderTargetDislikeState();
@@ -11,14 +11,14 @@ class TinderTargetDislike extends StatefulWidget {
 class _TinderTargetDislikeState extends State<TinderTargetDislike> {
   @override
   Widget build(BuildContext context) {
-    return DragTarget<String>(
+    return DragTarget<Beer>(
       onWillAccept: (data) {
         return true;
       },
       onAccept: (data) {
         widget.dislike(data);
       },
-      builder: (context, List<String> candidateData, List rejectedData) {
+      builder: (context, List<Beer> candidateData, List rejectedData) {
         return Container(
             color: Colors.red,
             height: MediaQuery.of(context).size.height,
