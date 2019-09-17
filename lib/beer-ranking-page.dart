@@ -205,13 +205,9 @@ class _BeerRankingPageState extends State<BeerRankingPage> {
 
 
 
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the BeerRankingPage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text('Beer Ranking Page'),
-      ),
-      body: Center(
+    return Container(
+        padding: EdgeInsets.all(30.0),
+        child: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: new Container(
