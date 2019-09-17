@@ -42,14 +42,12 @@ class _BeerTinderPageState extends State<BeerTinderPage> {
                 Positioned(
                   right: 0,
                   child: Container(
-                      color: Colors.red,
                       child: TinderTargetLike(key: UniqueKey(), like: (beer) => beerModel.likeBeer(beer))
                   ),
                 ),
                 Positioned(
                   left: 0,
                   child: Container(
-                      color: Colors.red,
                       child: TinderTargetDislike(key: UniqueKey(), dislike: (beer) => beerModel.dislikeBeer(beer))
                   )
                 ),

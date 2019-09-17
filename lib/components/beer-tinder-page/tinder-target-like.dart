@@ -20,9 +20,8 @@ class _TinderTargetLikeState extends State<TinderTargetLike> {
       },
       builder: (context, List<Beer> candidateData, List rejectedData) {
         return Container(
-            color: Colors.blue,
             height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width / 5,
+            width: MediaQuery.of(context).size.width / 3,
           );
       },
 
