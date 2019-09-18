@@ -23,7 +23,7 @@ class _CreateBeerPageState extends State<CreateBeerPage> {
 
   String beer_type = 'IPA';
   double slider_val = 5;
-  var list_tekst = ["Start med at vælge din øl-type","Hvor stærk skal øllen være?"];
+  var list_tekst = ["Choose your type of beer","Choose your ABV"];
   var list_widgets;
   var index = 0;
 
@@ -60,7 +60,7 @@ class _CreateBeerPageState extends State<CreateBeerPage> {
           children: <Widget>[
             SizedBox(height: 60),
             Text(
-              "Lad os starte med at vælge en øl-type",
+              "Let's begin by choosing your type of beer",
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.title,
             ),
@@ -101,7 +101,7 @@ class _CreateBeerPageState extends State<CreateBeerPage> {
           children: <Widget>[
             SizedBox(height: 60),
             Text(
-              "Godt valg! Hvor stærk skal din øl være?",
+              "Great choice! How strong would you like your beer?",
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.title,
             ),
@@ -135,7 +135,7 @@ class _CreateBeerPageState extends State<CreateBeerPage> {
           children: <Widget>[
             SizedBox(height: 60),
             Text(
-              "Hvad skal øllen være lavet på?",
+              "What should your beer be based on?",
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.title,
             ),Row(
@@ -145,7 +145,7 @@ class _CreateBeerPageState extends State<CreateBeerPage> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text("Byg"),
+                    Text("Barley"),
                     Checkbox(
                       value: bygVal,
                       onChanged: (bool value) {
@@ -161,7 +161,7 @@ class _CreateBeerPageState extends State<CreateBeerPage> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text("Rug"),
+                    Text("Rye"),
                     Checkbox(
                       value: rugVal,
                       onChanged: (bool value) {
@@ -177,7 +177,7 @@ class _CreateBeerPageState extends State<CreateBeerPage> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text("Hvede"),
+                    Text("Wheat"),
                     Checkbox(
                       value: hvedeVal,
                       onChanged: (bool value) {
@@ -201,13 +201,13 @@ class _CreateBeerPageState extends State<CreateBeerPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             SizedBox(height: 60), Text(
-              "Hvad skal mesterværket hedde?",
+              "What is your masterpiece called?",
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.title,
             ),
             TextField(
               controller: nameCon,
-              decoration: InputDecoration(labelText: 'Navn'),
+              decoration: InputDecoration(labelText: 'Name'),
               onSubmitted: (event){
                 setState(() {});
                 addComponent(3);
@@ -223,12 +223,12 @@ class _CreateBeerPageState extends State<CreateBeerPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             SizedBox(height: 60), Text(
-              "Beskriv smagen af "+nameCon.text,
+              "Describe the taste of "+nameCon.text,
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.title,
             ),
             TextField(
-              decoration: InputDecoration(labelText: 'Beskrivelse'),
+              decoration: InputDecoration(labelText: 'Description'),
 
               onChanged: (event){
                 addComponent(4);
@@ -249,7 +249,7 @@ class _CreateBeerPageState extends State<CreateBeerPage> {
 
                 },
                 child: Text(
-                  "Opret",
+                  "Create",
                   style: TextStyle(color: Colors.white, fontSize: 30),
                 )
             )
