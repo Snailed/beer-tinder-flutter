@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
+        fontFamily: 'Mikkeller',
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
@@ -50,7 +51,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   String beer_type = 'IPA';
   double slider_val = 5;
-  var list_tekst = ["Start med at vælge din øl-type","Hvor stærk skal øllen være?"];
   var list_widgets;
   var index = 0;
 
@@ -85,9 +85,13 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SizedBox(height: 60),
+            SizedBox(height: 20),
+            Image.asset(
+              'assets/beer_button@2x.png',
+              height: 100,
+            ),
             Text(
-              "Lad os starte med at vælge en øl-type",
+              "Let's begin by choosing your type of beer",
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.title,
             ),
@@ -96,7 +100,8 @@ class _MyHomePageState extends State<MyHomePage> {
               iconSize: 24,
               elevation: 16,
               style: TextStyle(
-                  color: Colors.deepPurple
+                  color: Colors.deepPurple,
+                  fontFamily: 'Mikkeller',
               ),
               underline: Container(
                 height: 2,
@@ -126,14 +131,18 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SizedBox(height: 60),
+            SizedBox(height: 20),
+            Image.asset(
+              'assets/glass-filling-with-beer@2x.png',
+              height: 100,
+            ),
             Text(
-              "Godt valg! Hvor stærk skal din øl være?",
+              "Great choice! How strong would you like your beer?",
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.title,
             ),
             Text(
-              slider_val.round().toString(),
+              slider_val.toStringAsFixed(1)+"%",
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.display1,
             ),
@@ -148,7 +157,7 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               min: 0,
               max: 10,
-              divisions: 10,
+              divisions: 20,
             ),
 
           ],
@@ -160,9 +169,9 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SizedBox(height: 60),
+            SizedBox(height: 20),
             Text(
-              "Hvad skal øllen være lavet på?",
+              "What should your beer be based on?",
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.title,
             ),Row(
@@ -172,7 +181,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text("Byg"),
+                    Text("Barley"),
                     Checkbox(
                       value: bygVal,
                       onChanged: (bool value) {
@@ -188,7 +197,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text("Rug"),
+                    Text("Rye"),
                     Checkbox(
                       value: rugVal,
                       onChanged: (bool value) {
@@ -204,7 +213,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text("Hvede"),
+                    Text("Wheat"),
                     Checkbox(
                       value: hvedeVal,
                       onChanged: (bool value) {
@@ -227,8 +236,8 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SizedBox(height: 60), Text(
-              "Hvad skal mesterværket hedde?",
+            SizedBox(height: 20), Text(
+              "What is your masterpiece called?",
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.title,
             ),
@@ -249,8 +258,8 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SizedBox(height: 60), Text(
-              "Beskriv smagen af "+nameCon.text,
+            SizedBox(height: 20), Text(
+              "Describe the taste of "+nameCon.text,
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.title,
             ),

@@ -70,3 +70,9 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: Mikkeller
+      fonts:
+        - asset: fonts/mikkeller_font-webfont.otf
+  assets:
+      - assets/
