@@ -259,7 +259,7 @@ class _BeerRankingPageState extends State<BeerRankingPage> {
             ),
             Text(
               'Top of ' + _value.toLowerCase(),
-              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 40),
+              style: TextStyle(fontSize: 40, fontFamily: 'Mikkelwind'),
             ),
             chartWidget,
             Container(
