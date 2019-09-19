@@ -23,7 +23,6 @@ class _CreateBeerPageState extends State<CreateBeerPage> {
 
   String beer_type = 'IPA';
   double slider_val = 5;
-  var list_tekst = ["Choose your type of beer","Choose your ABV"];
   var list_widgets;
   var index = 0;
 
@@ -58,7 +57,11 @@ class _CreateBeerPageState extends State<CreateBeerPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SizedBox(height: 60),
+            SizedBox(height: 20),
+            Image.asset(
+              'assets/beer_button@2x.png',
+              height: 100,
+            ),
             Text(
               "Let's begin by choosing your type of beer",
               textAlign: TextAlign.center,
@@ -69,11 +72,11 @@ class _CreateBeerPageState extends State<CreateBeerPage> {
               iconSize: 24,
               elevation: 16,
               style: TextStyle(
-                  color: Colors.deepPurple
+                  color: Colors.green,
               ),
               underline: Container(
                 height: 2,
-                color: Colors.deepPurpleAccent,
+                color: Colors.greenAccent,
               ),
               onChanged: (String newValue) {
                 setState(() {
@@ -99,14 +102,18 @@ class _CreateBeerPageState extends State<CreateBeerPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SizedBox(height: 60),
+            SizedBox(height: 20),
+            Image.asset(
+              'assets/glass-filling-with-beer@2x.png',
+              height: 100,
+            ),
             Text(
               "Great choice! How strong would you like your beer?",
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.title,
             ),
             Text(
-              slider_val.round().toString(),
+              slider_val.toStringAsFixed(1)+"%",
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.display1,
             ),
@@ -121,7 +128,7 @@ class _CreateBeerPageState extends State<CreateBeerPage> {
               },
               min: 0,
               max: 10,
-              divisions: 10,
+              divisions: 20,
             ),
 
           ],
@@ -133,7 +140,7 @@ class _CreateBeerPageState extends State<CreateBeerPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SizedBox(height: 60),
+            SizedBox(height: 20),
             Text(
               "What should your beer be based on?",
               textAlign: TextAlign.center,
@@ -200,14 +207,14 @@ class _CreateBeerPageState extends State<CreateBeerPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SizedBox(height: 60), Text(
+            SizedBox(height: 20), Text(
               "What is your masterpiece called?",
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.title,
             ),
             TextField(
               controller: nameCon,
-              decoration: InputDecoration(labelText: 'Name'),
+              decoration: InputDecoration(labelText: 'Navn'),
               onSubmitted: (event){
                 setState(() {});
                 addComponent(3);
@@ -222,13 +229,13 @@ class _CreateBeerPageState extends State<CreateBeerPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SizedBox(height: 60), Text(
+            SizedBox(height: 20), Text(
               "Describe the taste of "+nameCon.text,
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.title,
             ),
             TextField(
-              decoration: InputDecoration(labelText: 'Description'),
+              decoration: InputDecoration(labelText: 'Beskrivelse'),
 
               onChanged: (event){
                 addComponent(4);
@@ -249,7 +256,7 @@ class _CreateBeerPageState extends State<CreateBeerPage> {
 
                 },
                 child: Text(
-                  "Create",
+                  "Opret",
                   style: TextStyle(color: Colors.white, fontSize: 30),
                 )
             )
@@ -260,17 +267,17 @@ class _CreateBeerPageState extends State<CreateBeerPage> {
 
 
     return SafeArea(
-        child: AnimatedList(
-          controller: ListCon,
-          key: _listKey,
-          initialItemCount: 1,
-          itemBuilder: (BuildContext context, int index, Animation animation) {
-            return FadeTransition(
-              opacity: animation,
-              child: _buildItem(index),
-            );
-          },
-        ),
-      );
+      child: AnimatedList(
+        controller: ListCon,
+        key: _listKey,
+        initialItemCount: 1,
+        itemBuilder: (BuildContext context, int index, Animation animation) {
+          return FadeTransition(
+            opacity: animation,
+            child: _buildItem(index),
+          );
+        },
+      ),
+    );
   }
-}
+ }
